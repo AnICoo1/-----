@@ -1,0 +1,23 @@
+
+/* 屏幕宽度*/
+#define screenW [UIScreen mainScreen].bounds.size.width
+
+/* 屏幕高度*/
+#define screenH [UIScreen mainScreen].bounds.size.height
+
+
+/***********屏幕适配*************/
+#define iphone6P (screenH == 736)
+#define iphone6 (screenH == 667)
+#define iphone5 (screenH == 568)
+#define iphone4 (screenH == 480)
+/***********屏幕适配*************/
+
+#import "UIBarButtonItem+CLH.h"
+#import "UIImage+CLH.h"
+#import "UIImageView+Download.h"
+#import "UIView+CLH.h"
+#import "UITextField+CLH.h"
+
+/*RGB颜色*/
+#define CLHRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]

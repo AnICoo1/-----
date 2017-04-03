@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image_list</key>
+		<string>http://img.spriteapp.cn/ugc/2014/07/29/140324_27071.jpg</string>
+		<key>is_default</key>
+		<integer>0</integer>
+		<key>is_sub</key>
+		<integer>0</integer>
+		<key>sub_number</key>
+		<string>189704</string>
+		<key>theme_id</key>
+		<string>9</string>
+		<key>theme_name</key>
+		<string>自拍</string>
+	</dict>
+	<dict>
+		<key>image_list</key>
+		<string>http://img.spriteapp.cn/ugc/2015/01/09/183519_52127.png</string>
+		<key>is_default</key>
+		<integer>0</integer>
+		<key>is_sub</key>
+		<integer>0</integer>
+		<key>sub_number</key>
+		<string>164032</string>
+		<key>theme_id</key>
+		<string>335</string>
+		<key>theme_name</key>
+		<string>男神</string>
+	</dict>
+</array>
+</plist>

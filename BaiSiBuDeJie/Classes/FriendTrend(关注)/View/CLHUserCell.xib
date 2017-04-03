@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="usercell" id="KGk-i7-Jjw" customClass="CLHUserCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PJV-ae-nPm">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="OHy-I7-qvv"/>
+                            <constraint firstAttribute="width" constant="50" id="SQk-h9-N70"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3d-Uf-NMZ">
+                        <rect key="frame" x="65" y="10" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gb-nY-bRJ">
+                        <rect key="frame" x="65" y="39" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bke-9f-Hib">
+                        <rect key="frame" x="260" y="23" width="50" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="2UQ-PK-eSt"/>
+                            <constraint firstAttribute="height" constant="25" id="ooc-98-3dC"/>
+                        </constraints>
+                        <state key="normal" title="+ 关注" backgroundImage="FollowBtnBg">
+                            <color key="titleColor" red="1" green="0.093626078540000005" blue="0.15540722279999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="k3d-Uf-NMZ" firstAttribute="top" secondItem="PJV-ae-nPm" secondAttribute="top" id="9p8-es-ZK2"/>
+                    <constraint firstItem="6Gb-nY-bRJ" firstAttribute="leading" secondItem="PJV-ae-nPm" secondAttribute="trailing" constant="5" id="JPA-Po-Lyv"/>
+                    <constraint firstItem="PJV-ae-nPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="O79-LA-oFa"/>
+                    <constraint firstItem="PJV-ae-nPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RPx-eo-jm9"/>
+                    <constraint firstItem="k3d-Uf-NMZ" firstAttribute="leading" secondItem="PJV-ae-nPm" secondAttribute="trailing" constant="5" id="a9h-vB-EZg"/>
+                    <constraint firstItem="bke-9f-Hib" firstAttribute="centerY" secondItem="PJV-ae-nPm" secondAttribute="centerY" id="boO-qK-na2"/>
+                    <constraint firstItem="6Gb-nY-bRJ" firstAttribute="bottom" secondItem="PJV-ae-nPm" secondAttribute="bottom" id="lge-5T-YOH"/>
+                    <constraint firstAttribute="trailing" secondItem="bke-9f-Hib" secondAttribute="trailing" constant="10" id="qpJ-rd-vdK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="fansCountLabel" destination="6Gb-nY-bRJ" id="TN3-aV-ni4"/>
+                <outlet property="nameLabel" destination="k3d-Uf-NMZ" id="kWc-zu-6RW"/>
+                <outlet property="userImageView" destination="PJV-ae-nPm" id="3sc-sh-7Nd"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="FollowBtnBg" width="51" height="25"/>
+    </resources>
+</document>

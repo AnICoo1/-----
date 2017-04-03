@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categorycell" id="KGk-i7-Jjw" customClass="CLHCategoryCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIZ-1C-pVg">
+                        <rect key="frame" x="0.0" y="0.0" width="5" height="43"/>
+                        <color key="backgroundColor" red="1" green="0.093626078540000005" blue="0.15540722279999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="5" id="ALH-V5-O4Q"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wma-sB-5bh">
+                        <rect key="frame" x="5" y="42" width="315" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="mpu-gm-OwM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="wma-sB-5bh" secondAttribute="bottom" id="1rZ-0S-sRl"/>
+                    <constraint firstItem="wma-sB-5bh" firstAttribute="leading" secondItem="UIZ-1C-pVg" secondAttribute="trailing" id="2NL-P7-lmz"/>
+                    <constraint firstAttribute="trailing" secondItem="wma-sB-5bh" secondAttribute="trailing" id="LeW-sa-6og"/>
+                    <constraint firstItem="UIZ-1C-pVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jAY-m7-3hh"/>
+                    <constraint firstAttribute="bottom" secondItem="UIZ-1C-pVg" secondAttribute="bottom" id="nsj-Tr-JAD"/>
+                    <constraint firstItem="UIZ-1C-pVg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="v8q-hM-08b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="selectedView" destination="UIZ-1C-pVg" id="1lI-wP-dNM"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
