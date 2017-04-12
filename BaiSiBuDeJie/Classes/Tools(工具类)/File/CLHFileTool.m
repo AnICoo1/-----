@@ -20,14 +20,13 @@
         // 抛异常
         // name:异常名称
         // reason:报错原因
-        NSException *excp = [NSException exceptionWithName:@"pathError" reason:@"笨蛋 需要传入的是文件夹路径,并且路径要存在" userInfo:nil];
+        NSException *excp = [NSException exceptionWithName:@"pathError" reason:@"注意:需要传入的是文件夹路径,并且路径要存在" userInfo:nil];
         [excp raise];
         
     }
     
     // 获取cache文件夹下所有文件,不包括子路径的子路径
     NSArray *subPaths = [manager contentsOfDirectoryAtPath:directoryPath error:nil];
-    
     for (NSString *subPath in subPaths) {
         // 拼接完成全路径
         NSString *filePath = [directoryPath stringByAppendingPathComponent:subPath];
@@ -61,7 +60,6 @@
         
         // 获取文件夹下所有的子路径,包含子路径的子路径
         NSArray *subPaths = [mgr subpathsAtPath:directoryPath];
-        
         NSInteger totalSize = 0;
         
         for (NSString *subPath in subPaths) {
@@ -93,9 +91,7 @@
                 completion(totalSize);
             }
         });
-        
-        
-        
+
     });
     
     

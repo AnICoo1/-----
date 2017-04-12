@@ -11,8 +11,8 @@
 #import <Photos/Photos.h>
 #import "SVProgressHUD.h"
 
-
 #import "CLHTopicItem.h"
+
 
 
 @interface CLHSeeBigPhotoViewController () <UIScrollViewDelegate>
@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
     
     
     UIScrollView *scrollV = [[UIScrollView alloc] init];
@@ -77,6 +78,7 @@
 #pragma mark - 获得当前App对应的自定义相册
 - (PHAssetCollection *)createdCollection
 {
+    
     // 获得软件名字
     NSString *title = [NSBundle mainBundle].infoDictionary[(__bridge NSString *)kCFBundleNameKey];
     

@@ -17,8 +17,6 @@
 #import "UIImage+CLH.h"
 #import "CLHPopViewController.h"
 
-
-
 @interface CLHTabBarController ()
 
 @end

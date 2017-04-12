@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CLHTopicItem.h"
+@class CLHTopicCell;
 @interface CLHTopicViewController : UITableViewController
 
-@property (nonatomic, copy) UITableViewCell* (^videoBack)(NSIndexPath *indexPath);
+@property (nonatomic, copy) CLHTopicCell *(^videoBack)(NSIndexPath *indexPath);
 
 
 - (CLHTopicType)type;

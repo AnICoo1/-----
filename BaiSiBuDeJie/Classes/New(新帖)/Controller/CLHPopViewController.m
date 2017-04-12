@@ -8,6 +8,7 @@
 
 #import "CLHPopViewController.h"
 #import <SDAutoLayout/SDAutoLayout.h>
+#import "POP.h"
 
 #import "CLHPublishButton.h"
 @interface CLHPopViewController ()
@@ -29,28 +30,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpAll];
-     _videoButton.frame = CGRectMake(0, -1000, screenW / 3, _buttonView.height / 2);
-    _photoButton.frame = CGRectMake(screenW / 3, -1000, screenW / 3, _buttonView.height / 2);
-    _wordButton.frame = CGRectMake(screenW / 3 * 2, -1000, screenW / 3, _buttonView.height / 2);
-    _voiceButton.frame = CGRectMake(0, -1000, screenW / 3, _buttonView.height / 2);
-    _linkButton.frame = CGRectMake(screenW / 3 , -1000, screenW / 3, _buttonView.height / 2);
-    _reviewButton.frame = CGRectMake(screenW / 3 * 2, -1000, screenW / 3, _buttonView.height / 2);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            _voiceButton.frame = CGRectMake(0, _buttonView.height / 2, screenW / 3, _buttonView.height / 2);
-            _linkButton.frame = CGRectMake(screenW / 3, _buttonView.height / 2, screenW / 3, _buttonView.height / 2);
-            _reviewButton.frame = CGRectMake(screenW / 3 * 2, _buttonView.height / 2, screenW / 3, _buttonView.height / 2);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
-                _videoButton.frame = CGRectMake(0, 0, screenW / 3, _buttonView.height / 2);
-                _photoButton.frame = CGRectMake(screenW / 3, 0, screenW / 3, _buttonView.height / 2);
-                _wordButton.frame = CGRectMake(screenW / 3 * 2, 0, screenW / 3, _buttonView.height / 2);
-            }];
-        }];
-        
-        
-    });
+    [self setUpAnimation];
+}
+
+- (void)setUpAnimation{
+    [self addAniamtionWithButton:_videoButton fromRect:CGRectMake(0, -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(0, 0, screenW / 3, _buttonView.height / 2) afterTime:0.3];
+    
+    [self addAniamtionWithButton:_photoButton fromRect:CGRectMake(screenW / 3, -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3, 0, screenW / 3, _buttonView.height / 2) afterTime:0.2];
+    
+    [self addAniamtionWithButton:_wordButton fromRect:CGRectMake(screenW / 3 * 2, -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3 * 2, 0, screenW / 3, _buttonView.height / 2) afterTime:0.4];
+    
+    [self addAniamtionWithButton:_voiceButton fromRect:CGRectMake(0, -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(0, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) afterTime:0.2];
+    
+    [self addAniamtionWithButton:_linkButton fromRect:CGRectMake(screenW / 3 , -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) afterTime:0.1];
+    
+    [self addAniamtionWithButton:_reviewButton fromRect:CGRectMake(screenW / 3 * 2, -1000, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3 * 2, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) afterTime:0.3];
+    
+}
+
+- (void)addAniamtionWithButton:(CLHPublishButton *)button fromRect:(CGRect)fromRect toRect:(CGRect)toRect afterTime:(CGFloat)time{
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    animation.fromValue = [NSValue valueWithCGRect:fromRect];
+    animation.toValue = [NSValue valueWithCGRect:toRect];
+    animation.springSpeed = 5;
+    animation.springBounciness = 10;
+    animation.beginTime = CACurrentMediaTime() + time;
+    [button pop_addAnimation:animation forKey:nil];
     
 }
 
@@ -84,26 +90,38 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(imageViewClick)];
     [self.view addGestureRecognizer:tap];
 }
-- (void)imageViewClick{
-    [UIView animateWithDuration:0.1 animations:^{
-        _voiceButton.frame = CGRectMake(0, 1000, screenW / 3, _buttonView.height / 2);
-        _linkButton.frame = CGRectMake(screenW / 3 , 1000, screenW / 3, _buttonView.height / 2);
-        _reviewButton.frame = CGRectMake(screenW / 3 * 2, 1000, screenW / 3, _buttonView.height / 2);
-    }completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            _videoButton.frame = CGRectMake(0, 1000, screenW / 3, _buttonView.height / 2);
-            _photoButton.frame = CGRectMake(screenW / 3, 1000, screenW / 3, _buttonView.height / 2);
-            _wordButton.frame = CGRectMake(screenW / 3 * 2, 1000, screenW / 3, _buttonView.height / 2);
 
-        }completion:^(BOOL finished) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
+- (void)imageViewClick{
+    //停止交互
+    self.view.userInteractionEnabled = NO;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self addAniamtionWithButton:_videoButton fromRect:CGRectMake(0, 0, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(0, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.3];
+    
+    [self addAniamtionWithButton:_photoButton fromRect:CGRectMake(screenW / 3, 0, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.2];
+    
+    
+    [self addAniamtionWithButton:_wordButton fromRect:CGRectMake(screenW / 3 * 2, 0, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3 * 2, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.4];
+    
+    [self addAniamtionWithButton:_voiceButton fromRect:CGRectMake(0, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(0, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.2 ];
+    
+    
+    POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+    animation.fromValue = [NSValue valueWithCGRect:CGRectMake(screenW / 3 , _buttonView.height / 2, screenW / 3, _buttonView.height / 2)];
+    animation.toValue = [NSValue valueWithCGRect:CGRectMake(screenW / 3, 1000, screenW / 3, _buttonView.height / 2)];
+    animation.beginTime = CACurrentMediaTime() + 0.1;
+    [animation setCompletionBlock:^(POPAnimation *ani, BOOL finished) {
+       [weakSelf dismissViewControllerAnimated:NO completion:nil];
     }];
+    [_linkButton.layer pop_addAnimation:animation forKey:nil];
+    
+    
+    [self addAniamtionWithButton:_reviewButton fromRect:CGRectMake(screenW / 3 * 2, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3 * 2, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.3];
     
 }
 
 - (void)setUpButton{
-    
     //发视频
     _videoButton = [self publishButtonWithImage:@"publish-video" title:@"发视频"];
     _videoButton.frame = CGRectMake(0, 0, screenW / 3, _buttonView.height / 2);

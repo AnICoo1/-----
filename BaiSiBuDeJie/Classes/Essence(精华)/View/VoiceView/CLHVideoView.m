@@ -13,6 +13,8 @@
 #import "POPViewController.h"
 #import "CLHTopicItem.h"
 #import "CLHTopicViewController.h"
+#import "CLHTopicCell.h"
+
 
 @interface CLHVideoView ()
 /**中间开始播放按钮*/
@@ -43,12 +45,16 @@
 
 @property (nonatomic, strong) UIViewController *fillVC;
 
+
+
+
 @end
 
 
 @implementation CLHVideoView
 
 #pragma mark - 懒加载
+
 -(NSTimer *)progressTimer
 {
     if (_progressTimer == nil) {
@@ -115,7 +121,7 @@
 {
     NSInteger Min = interval / 60;
     NSInteger Sec = (NSInteger)interval % 60;
-    NSString *intervalString = [NSString stringWithFormat:@"%02ld:%02ld",Min,Sec];
+    NSString *intervalString = [NSString stringWithFormat:@"%02zd:%02zd",Min,Sec];
     return intervalString;
 }
 - (void)upDateBottomView{
@@ -139,18 +145,22 @@
     
 }
 
+
 //全屏按钮点击
 - (IBAction)fillScreenButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
+    
     if (sender.selected) {
-        
         self.superVC.modalPresentationStyle = UIModalPresentationCustom;
         //弹出全屏的VC
         [self.superVC presentViewController:self.fillVC animated:NO completion:^{
             //将视频界面添加到新的VC
+            
+            [self removeFromSuperview];
             [self.fillVC.view addSubview:self];
+            
             self.center = self.fillVC.view.center;
-            [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 self.frame = self.fillVC.view.bounds;
             } completion:nil];
         }];
@@ -158,9 +168,9 @@
         //取消弹出的VC
         [self.fillVC dismissViewControllerAnimated:NO completion:^{
             CLHTopicViewController *topicVC = (CLHTopicViewController *)self.superVC;
-            UITableViewCell *cell = topicVC.videoBack(self.indexPath);
-            [cell.contentView addSubview:self];
-            [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            CLHTopicCell *cell = topicVC.videoBack(self.indexPath);
+            cell.topic = self.topic;
+            [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 self.frame = self.beginFrame;
             } completion:nil];
         }];
@@ -178,6 +188,7 @@
 
 - (void)setTopic:(CLHTopicItem *)topic{
     _topic = topic;
+    self.playerItem = nil;
     self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:topic.videouri]];
     [self.bgView clh_setOriginImage:topic.image1 thumbnailImage:topic.image0 placeholder:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) return;

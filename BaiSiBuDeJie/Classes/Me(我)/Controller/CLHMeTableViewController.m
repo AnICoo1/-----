@@ -54,8 +54,6 @@ static NSString  * const ID = @"cell";
     layout.minimumLineSpacing = 1;
     layout.minimumInteritemSpacing = 1;
     
-    
-    
     //创建UICollectionView
     UICollectionView *collectionV = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 300) collectionViewLayout:layout];
     collectionV.backgroundColor = self.tableView.backgroundColor;
@@ -70,21 +68,6 @@ static NSString  * const ID = @"cell";
     
 }
 
-/*
-#pragma mark - UITableViewController
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"%zd %zd",indexPath.section,indexPath.row);
-    
-    if(indexPath.row == 0 && indexPath.section == 1){
-        
-        CLHLoginAndRegisterViewController *loginVC = [[CLHLoginAndRegisterViewController alloc] init];
-        
-        [self presentViewController:loginVC animated:YES completion:nil];
-    }
-}
-*/
 
 #pragma mark - 计算collectionView高度
 - (void)makeHeightOfCollection{

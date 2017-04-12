@@ -46,7 +46,7 @@ static NSString * const ID = @"topicCell";
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    [self setVideoBack:^UITableViewCell *(NSIndexPath *indexPath) {
+    [self setVideoBack:^CLHTopicCell *(NSIndexPath *indexPath) {
         return [weakSelf.tableView cellForRowAtIndexPath:indexPath];
     }];
     
@@ -122,18 +122,12 @@ static NSString * const ID = @"topicCell";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    CLHTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
-//    NSInteger cnt = cell.contentView.subviews.count;
-//    for(NSInteger i = 0; i < cnt; i++){
-//        NSLog(@"%@",cell.contentView.subviews[i]);
-//    }NSLog(@"************************************************************************");
+    //CLHTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     CLHTopicCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell == nil){
         cell = [[NSBundle mainBundle] loadNibNamed:@"CLHTopicCell" owner:nil options:nil].firstObject;
     }
     cell.topic = self.topics[indexPath.row];
-    
-    
     cell.locVC = self;
     cell.indexPath = indexPath;
     return cell;

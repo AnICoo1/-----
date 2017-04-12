@@ -116,7 +116,7 @@
         //字典转模型
         self.item = [CLHADItem mj_objectWithKeyValues:adDict];
         // 创建UIImageView展示图片 =>
-        CGFloat h = [UIScreen mainScreen].bounds.size.width / self.item.w * self.item.h;
+        CGFloat h = screenW / self.item.w * self.item.h;
         self.adImageV.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, h);
         
         // 加载广告网页

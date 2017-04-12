@@ -12,7 +12,7 @@
 
 
 @interface UIImageView (Download)
-- (void)clh_setOriginImage:(NSString *)originImageURL thumbnailImage:(NSString *)thumbnailImageURL placeholder:(UIImage *)placeholder completed:(id)completedBlock;
+- (void)clh_setOriginImage:(NSString *)originImageURL thumbnailImage:(NSString *)thumbnailImageURL placeholder:(UIImage *)placeholder completed:(SDExternalCompletionBlock)completedBlock;
     
 - (void)clh_setHeader:(NSString *)headerUrl;
     

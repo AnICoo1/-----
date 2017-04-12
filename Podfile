@@ -9,4 +9,5 @@ use_frameworks!
     pod 'MJExtension'
     pod 'MJRefresh'
     pod 'SDAutoLayout'
+    pod 'pop'
 end

@@ -11,16 +11,22 @@
 
 @implementation UIImageView (Download)
 
-- (void)clh_setOriginImage:(NSString *)originImageURL thumbnailImage:(NSString *)thumbnailImageURL placeholder:(UIImage *)placeholder completed:(id)completedBlock
+
+/**
+ 根据网络条件进行图片下载(具有查看原图的功能的时候)
+
+ @param originImageURL 原图的URL
+ @param thumbnailImageURL 缩略图的URL
+ @param placeholder 占位图
+ @param completedBlock 完成后的回调
+ */
+- (void)clh_setOriginImage:(NSString *)originImageURL thumbnailImage:(NSString *)thumbnailImageURL placeholder:(UIImage *)placeholder completed:(SDExternalCompletionBlock)completedBlock
 {
     // 根据网络状态来加载图片
     AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
     
     // 获得原图（SDWebImage的图片缓存是用图片的url字符串作为key）
     UIImage *originImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:originImageURL];
-    #warning 模拟器问题，图片直接下载，不再判断当前网络环境
-    [self sd_setImageWithURL:[NSURL URLWithString:originImageURL] placeholderImage:placeholder completed:completedBlock];
-    return;
     
     if (originImage) { // 原图已经被下载过
         [self sd_setImageWithURL:[NSURL URLWithString:originImageURL] placeholderImage:placeholder completed:completedBlock];
@@ -45,7 +51,14 @@
             }
         }
     }
+    [mgr startMonitoring];
 }
+
+/**
+ 设置圆形头像
+
+ @param headerUrl 头像图片的URL
+ */
 - (void)clh_setHeader:(NSString *)headerUrl
 {
     UIImage *placeholder = [UIImage renderOrigenImageWithImageName:@"defaultUserIcon"];
