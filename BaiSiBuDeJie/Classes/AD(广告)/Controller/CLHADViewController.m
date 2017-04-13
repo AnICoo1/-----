@@ -88,7 +88,6 @@
     if(i == 0){
         [self jumpClick:nil];
     }
-    
     i--;
     [self.jumpButton setTitle:[NSString stringWithFormat:@"跳转 (%d)",i] forState:UIControlStateNormal];
     
@@ -96,8 +95,6 @@
 #pragma mark - 加载广告数据
 - (void)loadAdData
 {
-    
-    
     // 1.创建请求会话管理者
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     

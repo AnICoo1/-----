@@ -99,11 +99,13 @@
 #pragma mark - 事件监听
 //背景点击
 - (void)bgViewDidClick{
-    self.beginButton.hidden = !self.beginButton.hidden;
-    self.bottomView.hidden = !self.bottomView.hidden;
+    
     if(self.beginButton.selected){
         [self addShowTime];
+        self.beginButton.hidden = !self.beginButton.hidden;
+        self.bottomView.hidden = !self.bottomView.hidden;
     }else{
+        self.beginButton.hidden = NO;
         [self removeShowTime];
     }
 }
@@ -133,6 +135,8 @@
 - (IBAction)pauseButtonClick:(UIButton *)sender {
     
     self.beginButton.selected = !self.beginButton.selected;
+    self.beginButton.hidden = NO;
+    self.bottomView.hidden = NO;
     if(!sender.selected){
         [self.player pause];
     }else{

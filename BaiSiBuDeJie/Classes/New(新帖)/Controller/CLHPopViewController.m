@@ -118,7 +118,6 @@
     
     
     [self addAniamtionWithButton:_reviewButton fromRect:CGRectMake(screenW / 3 * 2, _buttonView.height / 2, screenW / 3, _buttonView.height / 2) toRect:CGRectMake(screenW / 3 * 2, 1000, screenW / 3, _buttonView.height / 2) afterTime:0.3];
-    NSLog(@"xxx");
 }
 
 - (void)setUpButton{

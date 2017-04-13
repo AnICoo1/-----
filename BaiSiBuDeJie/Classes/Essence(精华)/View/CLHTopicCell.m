@@ -63,7 +63,6 @@
 {
     if (!_videoView) {
         CLHVideoView *videoView =[[NSBundle mainBundle] loadNibNamed:@"CLHVideoView" owner:nil options:nil].firstObject;
-        NSLog(@"here");
         [self.contentView addSubview:videoView];
         _videoView = videoView;
     }
